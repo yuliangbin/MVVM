@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<style>
+		.div {
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="mvvm-app" >
+		<p>{{msg1.name}}</p>
+		<p>{{msg}}</p>
+		<p v-bind:class="style">{{input}}</p>
+		<button v-on:click="changeMsg">{{msg}}</button>
+		<br>
+		<input v-model="input">
+    </div>
+    <script src="./js/observer.js"></script>
+	<script src="./js/watcher.js"></script>
+	<script src="./js/compile.js"></script>
+	<script src="./js/mvvm.js"></script>
+    <script>
+let vm = new MVVM({
+	el: "#mvvm-app",
+	data: {
+		input: "xiaoyu",
+		msg: "hello world",
+		msg1: {
+			name: 'xiaobin',
+		},
+		count: 0,
+		style: 'div',
+	},
+	methods: {
+		changeMsg: function(){
+			this.msg = 'hello world' + " " +  this.count++;
+		}
+	}
+})
+	</script>
+</body>
+</html>
